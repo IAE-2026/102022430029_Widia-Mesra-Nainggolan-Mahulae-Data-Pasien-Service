@@ -1,63 +1,99 @@
-<<<<<<< HEAD
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Service A - Data Pasien (e-Healthcare)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Service Laravel untuk Tugas 2 mata kuliah BBK2HAB3 - Integrasi Aplikasi Enterprise. Service ini mencatat data pasien rawat jalan pada sistem e-Healthcare, mencakup registrasi pasien baru dan verifikasi pasien yang sudah melakukan booking. Repository ini berisi hanya Service A dari ekosistem e-Healthcare.
 
-## About Laravel
+## Identitas
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+| Parameter | Nilai |
+|-----------|-------|
+| Mata Kuliah | BBK2HAB3 - Integrasi Aplikasi Enterprise |
+| Mahasiswa | Widia Mesra Nainggolan Mahulae |
+| NIM / X-IAE-KEY | 102022430029 |
+| Resource | patients |
+| Framework | Laravel 12 (PHP 8.2) |
+| Database | MySQL 8.0 |
+| Port | 8000 |
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Endpoint REST
 
-## Learning Laravel
+Semua endpoint wajib menyertakan header:
+X-IAE-KEY: 102022430029
+Content-Type: application/json
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+| Method | Path | Fungsi |
+|--------|------|--------|
+| GET | /api/v1/patients | Mengambil daftar seluruh pasien terdaftar |
+| GET | /api/v1/patients/{id} | Verifikasi data pasien yang sudah booking |
+| POST | /api/v1/patients | Registrasi pasien baru yang belum terdaftar |
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Format respon mengikuti Standard Integration Contract (IAE-T2).
 
-## Laravel Sponsors
+**Contoh body POST /api/v1/patients**
+```json
+{
+    "name": "Widia Mesra Nainggolan Mahulae",
+    "nik": "102022430029",
+    "phone": "082276162672",
+    "birth_date": "2007-01-13",
+    "address": "Bandung",
+    "allergies": "Milk"
+}
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+---
 
-### Premium Partners
+## Dokumentasi API & GraphQL
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+| Halaman | URL |
+|---------|-----|
+| Swagger UI | http://localhost:8000/api/datapatient |
+| GraphQL Playground | http://localhost:8000/graphql-playground |
 
-## Contributing
+**Contoh query GraphQL:**
+```graphql
+{
+    patients {
+        id
+        name
+        nik
+        phone
+        birth_date
+        address
+        allergies
+    }
+}
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+---
 
-## Code of Conduct
+## Menjalankan dengan Docker (Direkomendasikan)
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Pastikan Docker Desktop sudah aktif.
 
-## Security Vulnerabilities
+```bash
+docker compose up -d --build
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Setelah container berjalan, akses:
+- http://localhost:8000/api/v1/patients
+- http://localhost:8000/api/datapatient
+- http://localhost:8000/graphql-playground
 
-## License
+Stack Docker terdiri dari dua container:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-=======
-# 102022430029_Widia-Mesra-Nainggolan-Mahulae-Data-Pasien-Service
->>>>>>> 6484eecc32281829c373858188e8b3b92407c00b
+| Container | Image | Port host |
+|-----------|-------|-----------|
+| datapatient-service-app | Build dari Dockerfile | 8000 |
+| datapatient-service-db | mysql:8.0 | 3307 |
+
+---
+
+## Integrasi dengan Service Lain
+
+Service A dirancang untuk berkomunikasi dengan:
+- **Service Jadwal Dokter** → menyediakan data pasien untuk proses booking dan penjadwalan
+- **Service Farmasi & Obat** → menyediakan data pasien termasuk informasi alergi untuk persiapan resep
+
+Jika service lain belum berjalan, Service A tetap dapat berfungsi penuh secara standalone untuk keperluan penilaian REST dan GraphQL.
