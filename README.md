@@ -9,10 +9,6 @@ Service Laravel untuk Tugas 2 mata kuliah BBK2HAB3 - Integrasi Aplikasi Enterpri
 | Mata Kuliah | BBK2HAB3 - Integrasi Aplikasi Enterprise |
 | Mahasiswa | Widia Mesra Nainggolan Mahulae |
 | NIM / X-IAE-KEY | 102022430029 |
-| Resource | patients |
-| Framework | Laravel 12 (PHP 8.2) |
-| Database | MySQL 8.0 |
-| Port | 8000 |
 
 ---
 
