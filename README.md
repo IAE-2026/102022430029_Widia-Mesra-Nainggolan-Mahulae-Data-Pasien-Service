@@ -7,7 +7,7 @@ Service Laravel untuk Tugas 2 mata kuliah BBK2HAB3 - Integrasi Aplikasi Enterpri
 | Parameter | Nilai |
 |-----------|-------|
 | Mata Kuliah | BBK2HAB3 - Integrasi Aplikasi Enterprise |
-| Mahasiswa | Widia Mesra Nainggolan Mahulae |
+| Nama | Widia Mesra Nainggolan Mahulae |
 | NIM / X-IAE-KEY | 102022430029 |
 
 ---
