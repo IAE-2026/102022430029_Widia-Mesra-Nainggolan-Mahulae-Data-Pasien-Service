@@ -14,6 +14,9 @@ Dalam sistem E-Healthcare, layanan *Data Pasien Service* memiliki beberapa endpo
 
 dari ketiga endpoint di atas, endpoint **POST /api/v1/patients (Registrasi Pasien Baru)** dipilih sebagai transaksi kritis utama dalam analisis ini.
 
+---
+
+### 2. Alasan
 
 Adapun alasannya adalah karena sifatnya yang *state-changing*, yaitu sebuah proses bisnis yang secara permanen mengubah status data di dalam sistem, membuat entitas baru, dan bersifat tidak dapat dikembalikan. Pada saat data identitas pasien pertama kali masuk dan terdaftar di dalam database lokal *Data Pasien Service*, data tersebut yang akan menentukan jalannya proses di semua endpoint maupun layanan lain setelahnya, seperti *Service Jadwal Dokter* (untuk proses *booking* konsultasi) dan *Service Farmasi & Obat* (untuk penulisan resep digital oleh dokter). Akibatnya, jika terjadi kegagalan pada endpoint ini, akan terjadi kesalahan data yang merusak proses pekerjaan seluruh bagian rumah sakit.
 
