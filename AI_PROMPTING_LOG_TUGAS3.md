@@ -5,7 +5,7 @@
 
 ---
 
-1. Tolong analisis kode patient-service saya dan identifikasi bug yang menyebabkan error di endpoint /api/v1/patients. Fokus pada SSOService.php, SoapAuditService.php, dan PatientController.php.
+1. Tolong analisis kode saya dan kenapa ada bug yang menyebabkan error di endpoint /api/v1/patients. Fokus pada SSOService.php, SoapAuditService.php, dan PatientController.php.
 
 2. PatientController@store ku belum memanggil SoapAuditService dan AMQPPublisherService. Tolong bantu tambahkan integrasi keduanya dengan alur yang benar.
 
