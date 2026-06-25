@@ -12,7 +12,12 @@
                 "operationId": "69a46ed96bac75dd121e6dc98a33c34e",
                 "responses": {
                     "200": {
-                        "description": "Success"
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "401": {
                         "description": "Unauthorized"
@@ -72,7 +77,15 @@
                 },
                 "responses": {
                     "201": {
-                        "description": "Patient created"
+                        "description": "Patient created",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error"
                     },
                     "401": {
                         "description": "Unauthorized"
@@ -101,7 +114,12 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Success"
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "404": {
                         "description": "Patient not found"

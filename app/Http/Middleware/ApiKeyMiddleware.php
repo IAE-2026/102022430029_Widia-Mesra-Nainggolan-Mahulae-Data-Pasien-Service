@@ -11,7 +11,9 @@ class ApiKeyMiddleware
     {
         $apiKey = $request->header('X-IAE-KEY');
 
-        if ($apiKey !== env('API_KEY')) {
+        $expectedKey = env('API_KEY', '102022430029'); 
+
+        if ($apiKey !== $expectedKey) {
             return response()->json([
                 'status' => 'error',
                 'message' => 'Unauthorized',

@@ -23,7 +23,11 @@ class PatientController extends Controller
         summary: "Ambil semua data pasien",
         security: [["ApiKeyAuth" => []]],
         responses: [
-            new OA\Response(response: 200, description: "Success"),
+            new OA\Response(
+                response: 200, 
+                description: "Success",
+                content: new OA\JsonContent()
+            ),
             new OA\Response(response: 401, description: "Unauthorized")
         ]
     )]
@@ -49,7 +53,11 @@ class PatientController extends Controller
             new OA\Parameter(name: "id", in: "path", required: true, schema: new OA\Schema(type: "integer"))
         ],
         responses: [
-            new OA\Response(response: 200, description: "Success"),
+            new OA\Response(
+                response: 200, 
+                description: "Success",
+                content: new OA\JsonContent()
+            ),
             new OA\Response(response: 404, description: "Patient not found"),
             new OA\Response(response: 401, description: "Unauthorized")
         ]
@@ -94,7 +102,11 @@ class PatientController extends Controller
             )
         ),
         responses: [
-            new OA\Response(response: 201, description: "Patient created"),
+            new OA\Response(
+                response: 201, 
+                description: "Patient created",
+                content: new OA\JsonContent()
+            ),
             new OA\Response(response: 422, description: "Validation error"),
             new OA\Response(response: 401, description: "Unauthorized")
         ]

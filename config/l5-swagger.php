@@ -9,7 +9,7 @@ return [
             ],
 
             'routes' => [
-            'api' => 'api/datapatient',
+            'api' => 'api/documentation',
             ],
             'paths' => [
                 /*
