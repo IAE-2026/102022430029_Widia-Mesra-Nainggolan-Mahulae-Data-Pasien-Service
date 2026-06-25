@@ -51,7 +51,7 @@
                                     },
                                     "nik": {
                                         "type": "string",
-                                        "example": "102022430029"
+                                        "example": "1020224300291234"
                                     },
                                     "phone": {
                                         "type": "string",

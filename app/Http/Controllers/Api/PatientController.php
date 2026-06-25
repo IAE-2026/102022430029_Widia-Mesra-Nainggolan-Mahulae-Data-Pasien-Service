@@ -93,7 +93,7 @@ class PatientController extends Controller
                 required: ["name", "nik", "phone", "birth_date", "address"],
                 properties: [
                     new OA\Property(property: "name",       type: "string", example: "Widia Mesra"),
-                    new OA\Property(property: "nik",        type: "string", example: "102022430029"),
+                    new OA\Property(property: "nik",        type: "string", example: "1020224300291234"),
                     new OA\Property(property: "phone",      type: "string", example: "082276162672"),
                     new OA\Property(property: "birth_date", type: "string", example: "2007-01-13"),
                     new OA\Property(property: "address",    type: "string", example: "Medan"),
