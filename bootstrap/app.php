@@ -30,20 +30,27 @@ return Application::configure(basePath: dirname(__DIR__))
 
         $exceptions->render(function (\Illuminate\Validation\ValidationException $e, \Illuminate\Http\Request $request) {
             if ($request->is('api/*')) {
+                $flatErrors = [];
+                foreach ($e->errors() as $messages) {
+                    $flatErrors = array_merge($flatErrors, $messages);
+                }
                 return response()->json([
                     'status' => 'error',
                     'message' => 'Validation error',
-                    'errors' => $e->errors()
+                    'errors' => $flatErrors
                 ], 422);
             }
         });
 
         $exceptions->render(function (\Throwable $e, \Illuminate\Http\Request $request) {
             if ($request->is('api/*')) {
-                // Jangan override pengecualian HTTP yang sudah di-handle di atas
                 if ($e instanceof \Symfony\Component\HttpKernel\Exception\HttpExceptionInterface) {
                     return null; 
                 }
+                
+                \Illuminate\Support\Facades\Log::error("API 500 Error: " . $e->getMessage(), [
+                    'exception' => $e
+                ]);
                 
                 return response()->json([
                     'status' => 'error',
