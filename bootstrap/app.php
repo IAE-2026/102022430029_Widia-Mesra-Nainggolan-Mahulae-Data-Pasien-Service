@@ -30,14 +30,10 @@ return Application::configure(basePath: dirname(__DIR__))
 
         $exceptions->render(function (\Illuminate\Validation\ValidationException $e, \Illuminate\Http\Request $request) {
             if ($request->is('api/*')) {
-                $flatErrors = [];
-                foreach ($e->errors() as $messages) {
-                    $flatErrors = array_merge($flatErrors, $messages);
-                }
                 return response()->json([
                     'status' => 'error',
                     'message' => 'Validation error',
-                    'errors' => $flatErrors
+                    'errors' => $e->errors()
                 ], 422);
             }
         });
