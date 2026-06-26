@@ -30,7 +30,7 @@ Format respon mengikuti Standard Integration Contract (IAE-T2).
 ```json
 {
     "name": "Widia Mesra Nainggolan Mahulae",
-    "nik": "102022430029",
+    "nik": "1020224300291234",
     "phone": "082276162672",
     "birth_date": "2007-01-13",
     "address": "Bandung",

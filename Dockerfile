@@ -17,4 +17,4 @@ RUN chown -R www-data:www-data /var/www/storage
 
 EXPOSE 8000
 
-CMD sh -c "php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=8000"
+CMD sh -c "until php -r \"new PDO('mysql:host=db;port=3306;dbname=patient_service', 'root', 'root');\"; do sleep 1; done && php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=8000"
