@@ -16,8 +16,6 @@ services:
       - API_KEY=102022430029
     depends_on:
       - db
-    volumes:
-      - .:/var/www
 
   db:
     image: mysql:8.0
